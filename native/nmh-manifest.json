@@ -1,0 +1,7 @@
+{
+    "name": "com.huaiyang.spvideosniffer",
+    "description": "Sharepoint Video Sniffer",
+    "path": "C:\\Users\\huaiyang\\repo\\spvideo-downloader\\native",
+    "type": "stdio",
+    "allowed_origins": ["chrome-extension://aphcomeekillpfkigbjkohgnkkkgnknk/"]
+  }
