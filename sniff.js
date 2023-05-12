@@ -1,7 +1,10 @@
 const nativeClientAppId = "com.huaiyang.spvideosniffer";
 
 function callback(details) {
-    console.log("=== manifest url is: " + details.url);
+    console.log(
+        "=== manifest url is: " + details.url,
+        "tabId = " + details.tabId
+    );
     chrome.storage.session
         .set({
             videoManifestUrl: details.url,
@@ -9,8 +12,9 @@ function callback(details) {
         .then(() => {
             console.log("=== saved to storage");
             chrome.action.setBadgeText({
-                text: "1"
-            })
+                tabId: details.tabId,
+                text: "1",
+            });
         });
 }
 
