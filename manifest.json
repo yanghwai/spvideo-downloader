@@ -7,7 +7,8 @@
     "webRequest",
     "storage",
     "clipboardWrite",
-    "nativeMessaging"
+    "nativeMessaging",
+    "tabs"
   ],
   "host_permissions": [
     "https://*.sharepoint.com/",

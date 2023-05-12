@@ -1,17 +1,18 @@
 // Get the text field
 const copyText = document.getElementById("myInput");
+const videoTitle = document.getElementById("videoTitle");
 const btnStart = document.getElementById("btnStart");
+const btnCopyText = document.getElementById("btnCopyText");
+
 
 chrome.storage.session.get(["videoManifestUrl"]).then((result) => {
-    console.log("=== read manifest url" + result.videoManifestUrl);
-    copyText.value = result.videoManifestUrl;
+    if (result?.videoManifestUrl) {
+        console.log("=== read manifest url" + result.videoManifestUrl);
+        copyText.value = result.videoManifestUrl;
+    }
 });
 
-const btnCopyText = document.getElementById("btnCopyText");
 btnCopyText.onclick = () => {
-    // Get the text field
-    const copyText = document.getElementById("myInput");
-
     // Select the text field
     copyText.select();
     copyText.setSelectionRange(0, 99999); // For mobile devices
@@ -31,6 +32,6 @@ btnCopyText.onclick = () => {
 
 btnStart.onclick = () => {
     chrome.runtime.sendMessage({
-        startWithUrl: copyText.value
+        startWithUrl: copyText.value,
     });
 };

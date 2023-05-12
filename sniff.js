@@ -1,10 +1,6 @@
 const nativeClientAppId = "com.huaiyang.spvideosniffer";
 
 function callback(details) {
-    console.log(
-        "=== manifest url is: " + details.url,
-        "tabId = " + details.tabId
-    );
     chrome.storage.session
         .set({
             videoManifestUrl: details.url,
@@ -24,20 +20,16 @@ const filter = {
 };
 
 chrome.webRequest.onBeforeRequest.addListener(callback, filter);
-console.log("====!!!! start");
 
-function handleMessage(request, sender, sendResponse) {
-    console.log(`A content script sent a message: ${JSON.stringify(request)}`);
-    //const port = chrome.runtime.connectNative(nativeClientAppId);
+function handleForegroundMessage(request, sender, sendResponse) {
     if (request.startWithUrl) {
         chrome.runtime
             .sendNativeMessage(nativeClientAppId, {
                 text: "hello from chrome ext",
+            }, (msg) => {
+                console.log("=== Ack from native:" + msg);
             })
-            .catch((err) => {
-                console.error(err);
-            });
     }
 }
 
-chrome.runtime.onMessage.addListener(handleMessage);
+chrome.runtime.onMessage.addListener(handleForegroundMessage);

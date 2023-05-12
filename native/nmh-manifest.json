@@ -1,7 +1,7 @@
 {
     "name": "com.huaiyang.spvideosniffer",
     "description": "Sharepoint Video Sniffer",
-    "path": "C:\\Users\\huaiyang\\source\\repos\\SPVideoDownloader\\SPVideoDownloader\\bin\\Debug\\net6.0-windows\\SPVideoDownloader.exe",
+    "path": "./Downloading.exe",
     "type": "stdio",
     "allowed_origins": ["chrome-extension://aphcomeekillpfkigbjkohgnkkkgnknk/"]
   }
