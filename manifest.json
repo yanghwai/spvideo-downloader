@@ -6,7 +6,8 @@
   "permissions": [
     "webRequest",
     "storage",
-    "clipboardWrite"
+    "clipboardWrite",
+    "nativeMessaging"
   ],
   "host_permissions": [
     "https://*.sharepoint.com/",

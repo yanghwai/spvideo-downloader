@@ -1,5 +1,6 @@
 // Get the text field
 const copyText = document.getElementById("myInput");
+const btnStart = document.getElementById("btnStart");
 
 chrome.storage.session.get(["videoManifestUrl"]).then((result) => {
     console.log("=== read manifest url" + result.videoManifestUrl);
@@ -26,4 +27,10 @@ btnCopyText.onclick = () => {
         console.log("Disconnected");
     });
     port.postMessage({ jobUrl: copyText.value });
+};
+
+btnStart.onclick = () => {
+    chrome.runtime.sendMessage({
+        startWithUrl: copyText.value
+    });
 };
